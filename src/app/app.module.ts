@@ -9,11 +9,23 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
-import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule, NgxMatDateAdapter, NGX_MAT_DATE_FORMATS } from '@angular-material-components/datetime-picker';
+import { NgxMatMomentModule, NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular-material-components/moment-adapter';
 import { AppComponent } from './app.component';
 
+
+import { JalaliNgxMatDateAdapter, PERSIAN_DATE_FORMATS } from './datetime/custom-date-adapter';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 @NgModule({
+   providers: [
+      {
+         provide: NgxMatDateAdapter,
+         useClass: JalaliNgxMatDateAdapter,
+         deps: [MAT_DATE_LOCALE, NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+      },
+      { provide: NGX_MAT_DATE_FORMATS, useValue: PERSIAN_DATE_FORMATS }
+   ],
    declarations: [
       AppComponent
    ],
