@@ -96,7 +96,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.date = new Date(2021,9,4,5,6,7);
+    this.date = moment();
   }
 
   toggleMinDate(evt: any) {
@@ -121,15 +121,15 @@ export class AppComponent implements OnInit {
 
   private _setMinDate() {
     const now = new Date();
-    this.minDate = new Date();
-    this.minDate.setDate(now.getDate() - 1);
+    this.minDate = moment();
+    this.minDate.date(now.getDate() - 1);
   }
 
 
   private _setMaxDate() {
     const now = new Date();
-    this.maxDate = new Date();
-    this.maxDate.setDate(now.getDate() + 1);
+    this.maxDate = moment();
+    this.maxDate.date(now.getDate() + 1);
   }
 
 }
