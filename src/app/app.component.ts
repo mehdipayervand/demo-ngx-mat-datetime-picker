@@ -11,7 +11,7 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild('picker') picker: any;
+  @ViewChild('picker', { static: true }) picker: any;
 
   public date: moment.Moment;
   public disabled = false;
