@@ -2,7 +2,7 @@ import { NgxMatDateAdapter, NgxMatDateFormats } from '@angular-material-componen
 import * as jalaliMoment from 'jalali-moment';
 
 
-export const PERSIAN_DATE_FORMATS : NgxMatDateFormats  = {
+export const PERSIAN_DATE_FORMATS: NgxMatDateFormats = {
     parse: {
         dateInput: 'jYYYY/jMM/jDD'
     },
@@ -22,7 +22,12 @@ export class JalaliNgxMatDateAdapter extends NgxMatDateAdapter<jalaliMoment.Mome
         super.setLocale('fa');
     }
 
-
+    getYear(date: jalaliMoment.Moment): number {
+        return this.clone(date).jYear();
+    }
+    getMonth(date: jalaliMoment.Moment): number {
+        return this.clone(date).jMonth();
+    }
     getHour(date: jalaliMoment.Moment): number {
         return this.clone(date).hour();
     }
@@ -32,21 +37,21 @@ export class JalaliNgxMatDateAdapter extends NgxMatDateAdapter<jalaliMoment.Mome
     getSecond(date: jalaliMoment.Moment): number {
         return this.clone(date).second();
     }
+
     setHour(date: jalaliMoment.Moment, value: number): void {
-        this.clone(date).hours(value);
+        console.log("setHour", value);
+        this.clone(date).hour(value);
     }
     setMinute(date: jalaliMoment.Moment, value: number): void {
-        this.clone(date).minutes(value);
+        console.log("setMinute", value);
+        this.clone(date).minute(value);
     }
     setSecond(date: jalaliMoment.Moment, value: number): void {
-        this.clone(date).seconds(value);
+        console.log("setSecond", value);
+        this.clone(date).second(value);
     }
-    getYear(date: jalaliMoment.Moment): number {
-        return this.clone(date).jYear();
-    }
-    getMonth(date: jalaliMoment.Moment): number {
-        return this.clone(date).jMonth();
-    }
+
+
     getDate(date: jalaliMoment.Moment): number {
         return this.clone(date).jDate();
     }

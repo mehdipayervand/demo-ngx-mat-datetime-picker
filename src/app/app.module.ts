@@ -9,13 +9,15 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule, NgxMatDateAdapter, NGX_MAT_DATE_FORMATS } from '@angular-material-components/datetime-picker';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatDateAdapter, NGX_MAT_DATE_FORMATS } from '@angular-material-components/datetime-picker';
 import { NgxMatMomentModule, NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular-material-components/moment-adapter';
 import { AppComponent } from './app.component';
 
 
 import { JalaliNgxMatDateAdapter, PERSIAN_DATE_FORMATS } from './datetime/custom-date-adapter';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
    providers: [
@@ -30,6 +32,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
       AppComponent
    ],
    imports: [
+      MatFormFieldModule,
+      MatInputModule,
       BrowserModule,
       HttpClientModule,
       BrowserAnimationsModule,
@@ -43,7 +47,10 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
       NgxMatMomentModule,
       MatRadioModule,
       MatSelectModule,
-      MatCheckboxModule
+      MatCheckboxModule,
+      MatNativeDateModule,
+      MatMomentDateModule,
+
    ],
    bootstrap: [
       AppComponent
